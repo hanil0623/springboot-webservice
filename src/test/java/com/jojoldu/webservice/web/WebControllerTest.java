@@ -2,10 +2,13 @@ package com.jojoldu.webservice.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -24,6 +27,8 @@ public class WebControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
     public void 메인페이지_로딩() {
         //when
         String body = this.restTemplate.getForObject("/", String.class);
