@@ -4,6 +4,8 @@ import com.jojoldu.webservice.dto.posts.PostsSaveRequestDto;
 import com.jojoldu.webservice.service.PostsService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,4 +42,10 @@ public class WebRestController {
                 .findFirst()
                 .orElse("");
     }
+
+    @GetMapping("/health")
+    public ResponseEntity test(){
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }
